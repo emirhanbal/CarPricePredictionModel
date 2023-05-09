@@ -3,6 +3,9 @@
 
 # # CAR PRICE PREDICTION MODEL #MAIN
 
+# Kütüphane ve modül eklemelerinin yaptım. Seleniumu projeme dahil ettim ve ilan sitesine yönlendirdim.
+# İlk olarak anasayfada görünen ilanların linklerini aldım ki daha sonrasında bu ilanların içeriğine ulaşabileyim.
+
 # In[1]:
 
 
@@ -55,6 +58,8 @@ print(linklist)
 len(linklist)
 
 
+# Burada anasayfadaki ilanların linklerini listemde tutuyorum. Şimdi Selenium'u bu listedeki linklere yönlendireceğim
+
 # In[2]:
 
 
@@ -85,6 +90,8 @@ for link in linklist:
 
 cardetail
 
+
+# Selenium linklere gitti ve her linkin tablosundaki verileri ayrı ayrı topladı.
 
 # In[4]:
 
@@ -119,6 +126,8 @@ for item in cardetail:
 print(new_data)
 
 
+# \n şeklinde birbirinden ayrılan verileri düzenledim ve başlıkları almadım.
+
 # In[7]:
 
 
@@ -131,13 +140,17 @@ new_data[0]
 new_data[0][0]
 
 
+# Fiyatın yanındaki "TL" "." ve kilometrenin yanındaki "km" "." ifadesi daha sonrası için sıkıntı yaratacağı için basit bir şekilde bunları yok saydım.
+
 # In[9]:
 
 
 for data in new_data:
     data[0] = data[0].replace(' TL', '')
+    data[0] = data[0].replace('.', '')
     data[8] = data[8].replace(' km', '')
-new_data    
+    data[8] = data[8].replace('.', '')
+new_data
     #listedeki bütün fiyatların sonundaki TL stringini kaldırmaya çalışıyorum**
 
 
@@ -153,6 +166,8 @@ new_data[0]
 type(new_data)
 
 
+# MongoDB kütüphanelerini import ediyorum
+
 # In[12]:
 
 
@@ -165,6 +180,8 @@ load_dotenv(find_dotenv())
 #MongoDB için gerekli kütüphaneler
 
 
+# MongoDb database'imi bağlıyorum.
+
 # In[13]:
 
 
@@ -174,6 +191,8 @@ client = MongoClient(connection_string)
 
 #MONGODB ile kodumu ilişkilendirme adımı. burada database'imi bağlıyorum.
 
+
+# Database'de dictionary tipinde local variable oluşturup database'e verileri aktarıyorum.
 
 # In[14]:
 
@@ -225,14 +244,16 @@ print(dbs)
 collection.find_one()
 
 
-# In[17]:
+# Basit bir filtreleme yapıyorum.
+
+# In[18]:
 
 
 denemeSorgusu = {"Marka" : "Fiat"}
 #Marka fiyat filtreleyebilmek için deneme sorgusu
 
 
-# In[18]:
+# In[19]:
 
 
 Marka = input()
@@ -240,35 +261,19 @@ Seri = input()
 #kullanıcıdan input almak için örnek adım
 
 
-# In[19]:
+# In[20]:
 
 
 denemeSorgusu = {"Marka" : Marka, "Seri" : Seri}
 #sorguyu yazdırdım
 
 
-# In[20]:
+# In[21]:
 
 
 for i in collection.find(denemeSorgusu, {"_id":0}):
     print(i)
 #kullanıcının inputlarına göre datasetimi sorguladım ve sonuçları doğru ve eksiksiz bir biçimde verdi.
-
-
-# In[83]:
-
-
-for document in collection.find():
-    if "Fiyat" in document:
-        try:
-            fiyat = int(document["Fiyat"])
-            document["Fiyat"] = fiyat
-            # Güncellenmiş belgeyi veritabanına geri kaydedin
-            collection.replace_one({"_id": document["_id"]}, document)
-        except ValueError:
-            pass
-        
-#bu satır çalışmıyor. burada fiyat datasının tipini integer yapmaya çalıştım ancak olmadı. MongoDB içerisindeki updatelemelerle düzenlemeye çalışacağım.
 
 
 # In[ ]:
