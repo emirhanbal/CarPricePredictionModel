@@ -1,7 +1,7 @@
 Flask
 gunicorn
 pymongo
-dotenv
+python-dotenv
 pandas
 sklearn
 sklearn.impute
