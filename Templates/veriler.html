@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seçilen Marka Verileri</title>
+</head>
+<body>
+    <h1>Seçilen Marka Verileri</h1>
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Yıl</th>
+            <th>Fiyat</th>
+            <!-- Diğer özellikleri ekleyebilirsiniz -->
+        </tr>
+        {% for veri in veriler %}
+            <tr>
+                <td>{{ veri['Model'] }}</td>
+                <td>{{ veri['Yıl'] }}</td>
+                <td>{{ veri['Fiyat'] }}</td>
+                <!-- Diğer özellikleri ekleyebilirsiniz -->
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

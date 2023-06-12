@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seçilen Marka İlanları</title>
+</head>
+<body>
+    <h1>Seçilen Marka İlanları</h1>
+    <table>
+        <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Yıl</th>
+            <th>Kilometre</th>
+            <th>Fiyat</th>
+            <th>Konum</th>
+        </tr>
+        {% for ad in ads %}
+        <tr>
+            <td>{{ ad.Marka }}</td>
+            <td>{{ ad.Model }}</td>
+            <td>{{ ad.Yil }}</td>
+            <td>{{ ad.Kilometre }}</td>
+            <td>{{ ad.Fiyat }}</td>
+            <td>{{ ad.Konum }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

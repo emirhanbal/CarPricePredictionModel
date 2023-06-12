@@ -1,2 +1,13 @@
 Flask
 gunicorn
+pymongo
+dotenv
+os
+pprint
+pandas
+sklearn
+sklearn.impute
+sklearn.preprocessing
+sklearn.model_selection
+sklearn.ensemble
+flask
