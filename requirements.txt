@@ -3,8 +3,5 @@ gunicorn
 pymongo
 python-dotenv
 pandas
-sklearn.impute
-sklearn.preprocessing
-sklearn.model_selection
-sklearn.ensemble
+scikit-learn
 flask
