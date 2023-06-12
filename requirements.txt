@@ -3,7 +3,6 @@ gunicorn
 pymongo
 python-dotenv
 pandas
-sklearn
 sklearn.impute
 sklearn.preprocessing
 sklearn.model_selection
