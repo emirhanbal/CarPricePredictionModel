@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 from dotenv import load_dotenv, find_dotenv
 import os
-import pprint
 load_dotenv(find_dotenv())
 
 #MongoDB için gerekli kütüphaneler
