@@ -2,55 +2,164 @@
 <html>
 <head>
     <title>Fiyat Tahmini</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            grid-gap: 10px;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+        }
+
+        form label {
+            justify-self: end;
+        }
+
+        form input,
+        form select {
+            justify-self: start;
+        }
+    </style>
 </head>
 <body>
-    <h1>Fiyat Tahmini</h1>
-    <form action="/" method="POST">
-        <label for="yil">Yıl:</label>
-        <input type="number" id="yil" name="yil" required><br><br>
+    <div class="container">
+        <h1>Fiyat Tahmini</h1>
+        <form action="/" method="POST">
+            <label for="yil">Yıl:</label>
+            <input type="number" id="yil" name="yil" required>
 
-        <label for="kilometre">Kilometre:</label>
-        <input type="number" id="kilometre" name="kilometre" required><br><br>
+            <label for="kilometre">Kilometre:</label>
+            <input type="number" id="kilometre" name="kilometre" required>
 
-        <label for="yakit_tipi">Yakıt Tipi:</label>
-        <select id="yakit_tipi" name="yakit_tipi" required>
-            <option value="Benzin">Benzin</option>
-            <option value="Dizel">Dizel</option>
-            <option value="Elektrik">Elektrik</option>
-            <option value="Hibrit">Hibrit</option>
-            <option value="LPG & Benzin">LPG & Benzin</option>
-        </select><br><br>
+            <label for="yakit_tipi">Yakıt Tipi:</label>
+            <select id="yakit_tipi" name="yakit_tipi" required>
+                <option value="Benzin">Benzin</option>
+                <option value="Dizel">Dizel</option>
+                <option value="Elektrik">Elektrik</option>
+                <option value="Hibrit">Hibrit</option>
+                <option value="LPG & Benzin">LPG & Benzin</option>
+            </select>
 
-        <label for="vites_tipi">Vites Tipi:</label>
-        <select id="vites_tipi" name="vites_tipi" required>
-            <option value="Düz">Düz</option>
-            <option value="Otomatik">Otomatik</option>
-            <option value="Yarı Otomatik">Yarı Otomatik</option>
-        </select><br><br>
+            <label for="vites_tipi">Vites Tipi:</label>
+            <select id="vites_tipi" name="vites_tipi" required>
+                <option value="Düz">Düz</option>
+                <option value="Otomatik">Otomatik</option>
+                <option value="Yarı Otomatik">Yarı Otomatik</option>
+            </select>
 
-        <label for="boya_degisen">Boya Değişen:</label>
-        <select id="boya_degisen" name="boya_degisen" required>
-            <option value="Belirtilmemiş">Belirtilmemiş</option>
-            <option value="Tamamı orjinal">Tamamı orjinal</option>
-            <option value="Var">Var</option>
-        </select><br><br>
+            <label for="boya_degisen">Boya Değişen:</label>
+            <select id="boya_degisen" name="boya_degisen" required>
+                <option value="Belirtilmemiş">Belirtilmemiş</option>
+                <option value="Tamamı orjinal">Tamamı orjinal</option>
+                <option value="Var">Var</option>
+            </select>
 
-        <label for="marka">Marka:</label>
-        <select id="marka" name="marka" required>
-            <option value="Alfa Romeo">Alfa Romeo</option>
-            <option value="Arora">Arora</option>
-            <option value="Hyundai">Hyundai</option>
-            <!-- Diğer markaları buraya ekleyin -->
-        </select><br><br>
+            <label for="marka">Marka:</label>
+            <select id="marka" name="marka" required>
+                <option value="Alfa Romeo">Alfa Romeo</option>
+                <option value="Audi">Audi</option>
+                <option value="BMW">BMW</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Chrysler">Chrysler</option>
+                <option value="Citroen">Citroen</option>
+                <option value="DS Automobiles">DS Automobiles</option>
+                <option value="Dacia">Dacia</option>
+                <option value="Daewoo">Daewoo</option>
+                <option value="DeutzFahr">DeutzFahr</option>
+                <option value="Dodge">Dodge</option>
+                <option value="Fiat">Fiat</option>
+                <option value="Ford">Ford</option>
+                <option value="Ford Otosan">Ford Otosan</option>
+                <option value="Ford Trucks">Ford Trucks</option>
+                <option value="Hino">Hino</option>
+                <option value="Honda">Honda</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Isuzu">Isuzu</option>
+                <option value="Iveco">Iveco</option>
+                <option value="Iveco Otoyol">Iveco Otoyol</option>
+                <option value="Jeep">Jeep</option>
+                <option value="Kanuni">Kanuni</option>
+                <option value="Karsan">Karsan</option>
+                <option value="Kia">Kia</option>
+                <option value="Lada">Lada</option>
+                <option value="Land Rover">Land Rover</option>
+                <option value="MAN">MAN</option>
+                <option value="MG">MG</option>
+                <option value="MINI">MINI</option>
+                <option value="Maserati">Maserati</option>
+                <option value="Massey Ferguson">Massey Ferguson</option>
+                <option value="Mercedes Benz">Mercedes Benz</option>
+                <option value="Mitsubishi">Mitsubishi</option>
+                <option value="Mitsubishi Temsa">Mitsubishi Temsa</option>
+                <option value="New Holland">New Holland</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Opel">Opel</option>
+                <option value="Otokar">Otokar</option>
+                <option value="Otomobil">Otomobil</option>
+                <option value="Peugeot">Peugeot</option>
+                <option value="Polaris">Polaris</option>
+                <option value="Porsche">Porsche</option>
+                <option value="RKS">RKS</option>
+                <option value="Renault">Renault</option>
+                <option value="Scania">Scania</option>
+                <option value="Seat">Seat</option>
+                <option value="Skoda">Skoda</option>
+                <option value="Smart">Smart</option>
+                <option value="Subaru">Subaru</option>
+                <option value="Suzuki">Suzuki</option>
+                <option value="Tesla">Tesla</option>
+                <option value="Tofaş">Tofaş</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Triumph">Triumph</option>
+                <option value="Vespa">Vespa</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="Volvo">Volvo</option>
+                <option value="Yamaha">Yamaha</option>
+                <option value="Diğer">Diğer</option>
+            </select>
 
-        <label for="seri">Seri:</label>
-        <input type="text" id="seri" name="seri" required><br><br>
+            <label for="seri">Seri:</label>
+            <input type="text" id="seri" name="seri" required>
 
-        <input type="submit" value="Tahmin Et">
-    </form>
-    
-    <h1>Fiyat Tahmini Sonucu</h1>
-    <p>Tahmin edilen fiyat: {{ predicted_price }}</p>
-    
+            <input type="submit" value="Tahmin Et">
+        </form>
+
+        <h1>Fiyat Tahmini Sonucu</h1>
+        <p>Tahmin edilen fiyat: {{ predicted_price }}</p>
+        <p>Girilen değerler kontrol: {{ input_data }}</p>
+        
+        <h2>En Düşük Fiyatlı Araçlar:</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Link</th>
+              <th>Fiyat</th>
+            </tr>
+          </thead>
+      <tbody>
+        {% for prediction in predictions %}
+            <tr>
+              <td><a href="{{ prediction[0] }}">{{ prediction[0] }}</a></td>
+              <td>{{ prediction[1] }} TL</td>
+            </tr>
+            {% endfor %}
+      </tbody>
+        </table>
+
+        
+    </div>
 </body>
 </html>
