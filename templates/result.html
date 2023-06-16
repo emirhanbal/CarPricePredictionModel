@@ -1,9 +1,135 @@
-<html>
-  <head>
-    <title>Fiyat Tahmini Sonucu</title>
-  </head>
-  <body>
-    <h1>Fiyat Tahmini Sonucu</h1>
-    <p>Tahmin edilen fiyat: {{ predicted_price }}</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Dealer Data Spend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #333;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        
+
+        .card {
+            width: calc(50% - 10px);
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none; /* Linkin altı çizgisini kaldırır */
+            color: inherit; /* Linkin varsayılan rengini alır */
+        }
+        
+        .predictcard {
+            width: calc(50% - 10px);
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Car Price Prediction</h1>
+        </div>
+        
+        <div class="predictcard">
+            <div class="card-content">
+                <h2>{{input_sorgu[0]}} {{input_sorgu[1]}}</h2>
+                <p>Yıl: {{input_sorgu[2]}}</p>
+                <p>Kilometre: {{input_sorgu[3]}}</p>
+                <p>Vites Tipi: {{input_sorgu[4]}}</p>
+                <p>Yakıt Tipi: {{input_sorgu[5]}}</p>
+                <p>Boya Değişen: {{input_sorgu[6]}}</p>
+                <h2>Tahmin edilen fiyat: {{ predicted_price }} TL</h2>
+                <p>Girilen değerler kontrol: {{ input_data }}</p>
+            </div>
+        </div>
+        
+        <h1>Önerilen İlanlar</h1>
+        
+        <div class="card-container">
+            {% for prediction in predictions %}
+            <a href="{{ prediction[0] }}" class="card">
+                <img src="{{ prediction[9] }}" alt="Image">
+                <div class="card-content">
+                    <h2>Fiyat: {{ prediction[1] }} TL</h2>
+                    <p>Marka: {{ prediction[2] }}</p>
+                    <p>Seri: {{ prediction[3] }}</p>
+                    <p>Yıl: {{ prediction[4] }}</p>
+                    <p>Kilometre: {{ prediction[5] }}</p>
+                    <p>Vites Tipi: {{ prediction[6] }}</p>
+                    <p>Yakıt Tipi: {{ prediction[7] }}</p>
+                    <p>Boya Değişen: {{ prediction[8] }}</p>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+        
+    </div>
+</body>
 </html>

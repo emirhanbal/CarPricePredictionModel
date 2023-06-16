@@ -14,7 +14,7 @@ connection_string = f"mongodb+srv://emirhanbal:{password}@graduation.r68pz0b.mon
 client = MongoClient(connection_string)
 
 #MONGODB ile kodumu ilişkilendirme adımı. burada database'imi bağlıyorum.
-db = client["ilanlar_arabamcom"]
+db = client["ilanlar"]
 collection = db["arac_detay_arabamcom"]
 
 dataFromDatabase = list(collection.find())
@@ -25,8 +25,6 @@ _df = pd.DataFrame(dataFromDatabase)
 # ve bunları verilerim arasından çıkarıyorum
 _df.drop(_df[(_df.Fiyat < 10000) | (_df.Fiyat > 15000000) | (_df.Kilometre>1000000)].index, inplace=True)
 
-# boya değişen olanları 'Var' olarak değiştiriyorum
-_df.Boya_degisen[(_df.Boya_degisen!='Tamamı orjinal') & (_df.Boya_degisen!='Belirtilmemiş')] = 'Var'
 
 columns_to_keep = ['Fiyat', 'Marka', 'Seri', 'Yil', 'Kilometre', 'Vites_Tipi', 'Yakit_Tipi', 'Boya_degisen'] #'Model', 'Seri',
 _df = _df[columns_to_keep]
@@ -157,19 +155,29 @@ def predict():
         marka_kod = marka_sozlugu.get(marka, -1)
         seri_kod = seri_sozlugu.get(seri, -1)
 
+        
+        input_sorgu = [marka, seri, yil, kilometre, yakit_tipi, vites_tipi, boya_degisen]
         input_data = [[yil, kilometre] + yakit_tipi_kod + vites_tipi_kod + boya_degisen_kod + [marka_kod, seri_kod]]
         
         predictions = []
-        user_input = collection.find({"Marka" : marka, "Seri": seri}).sort("Fiyat", 1).limit(3) #, "Boya_degisen" : "Belirtilmemiş"
+        user_input = collection.find({"Marka" : marka, "Seri": seri, "Boya_degisen":boya_degisen }).sort("Fiyat", 1).limit(3) #, "Boya_degisen" : "Belirtilmemiş"
         for arac in user_input:
             link = arac['Link']
             fiyat = arac['Fiyat']
-            predictions.append((link, fiyat))
+            marka = arac['Marka']
+            seri = arac['Seri']
+            yil = arac['Yil']
+            kilometre = arac['Kilometre']
+            vites_tipi = arac['Vites_Tipi']
+            yakit_tipi = arac['Yakit_Tipi']
+            boya_degisen = arac['Boya_degisen']
+            image_URL = arac['Image_URL']
+            predictions.append((link, fiyat, marka, seri, yil, kilometre, vites_tipi, yakit_tipi,boya_degisen,image_URL))
             
         predicted_price = predict_price(regressor, input_data)
-        return render_template('index.html', predicted_price=predicted_price , input_data=input_data, predictions=predictions)
+        return render_template('result.html', predicted_price=predicted_price , input_data=input_data, predictions=predictions, input_sorgu=input_sorgu)
     else:
-        return render_template('index.html')
+        return render_template('ilanlar.html')
     
 #return render_template('index.html')
     

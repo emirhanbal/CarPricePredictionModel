@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 300px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 96%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            width: auto;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="container">
+        <h1>HOW MUCH IS MY CAR?</h1>
+        <form action="/" method="POST">
+            <div class="form-card">
+                <div class="card">
+                    <label for="yil">Yıl:</label>
+                    <input type="number" id="yil" name="yil" required>
+                </div>
+
+                <div class="card">
+                    <label for="kilometre">Kilometre:</label>
+                    <input type="number" id="kilometre" name="kilometre" required>
+                </div>
+
+                <div class="card">
+                    <label for="yakit_tipi">Yakıt Tipi:</label>
+                    <select id="yakit_tipi" name="yakit_tipi" required>
+                        <option value="Benzin">Benzin</option>
+                        <option value="Dizel">Dizel</option>
+                        <option value="Elektrik">Elektrik</option>
+                        <option value="Hibrit">Hibrit</option>
+                        <option value="LPG & Benzin">LPG & Benzin</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <label for="vites_tipi">Vites Tipi:</label>
+                    <select id="vites_tipi" name="vites_tipi" required>
+                        <option value="Düz">Düz</option>
+                        <option value="Otomatik">Otomatik</option>
+                        <option value="Yarı Otomatik">Yarı Otomatik</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <label for="boya_degisen">Boya Değişen:</label>
+                    <select id="boya_degisen" name="boya_degisen" required>
+                        <option value="Belirtilmemiş">Belirtilmemiş</option>
+                        <option value="Tamamı orjinal">Tamamı orjinal</option>
+                        <option value="Var">Var</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <label for="marka">Marka:</label>
+                    <select id="marka" name="marka" required>
+                        <option value="Alfa Romeo">Alfa Romeo</option>
+                        <option value="Audi">Audi</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Chrysler">Chrysler</option>
+                        <option value="Citroen">Citroen</option>
+                        <option value="DS Automobiles">DS Automobiles</option>
+                        <option value="Dacia">Dacia</option>
+                        <option value="Daewoo">Daewoo</option>
+                        <option value="DeutzFahr">DeutzFahr</option>
+                        <option value="Dodge">Dodge</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Ford Otosan">Ford Otosan</option>
+                        <option value="Ford Trucks">Ford Trucks</option>
+                        <option value="Hino">Hino</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Isuzu">Isuzu</option>
+                        <option value="Iveco">Iveco</option>
+                        <option value="Iveco Otoyol">Iveco Otoyol</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="Kanuni">Kanuni</option>
+                        <option value="Karsan">Karsan</option>
+                        <option value="Kia">Kia</option>
+                        <option value="Lada">Lada</option>
+                        <option value="Land Rover">Land Rover</option>
+                        <option value="MAN">MAN</option>
+                        <option value="MG">MG</option>
+                        <option value="MINI">MINI</option>
+                        <option value="Maserati">Maserati</option>
+                        <option value="Massey Ferguson">Massey Ferguson</option>
+                        <option value="Mercedes Benz">Mercedes Benz</option>
+                        <option value="Mitsubishi">Mitsubishi</option>
+                        <option value="Mitsubishi Temsa">Mitsubishi Temsa</option>
+                        <option value="New Holland">New Holland</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Opel">Opel</option>
+                        <option value="Otokar">Otokar</option>
+                        <option value="Otomobil">Otomobil</option>
+                        <option value="Peugeot">Peugeot</option>
+                        <option value="Polaris">Polaris</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="RKS">RKS</option>
+                        <option value="Renault">Renault</option>
+                        <option value="Scania">Scania</option>
+                        <option value="Seat">Seat</option>
+                        <option value="Skoda">Skoda</option>
+                        <option value="Smart">Smart</option>
+                        <option value="Subaru">Subaru</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Tesla">Tesla</option>
+                        <option value="Tofaş">Tofaş</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Triumph">Triumph</option>
+                        <option value="Vespa">Vespa</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Volvo">Volvo</option>
+                        <option value="Yamaha">Yamaha</option>
+                        <option value="Diğer">Diğer</option>
+                    </select>
+            </div>
+            <div class="card">
+                <label for="seri">Seri:</label>
+                <input type="text" id="seri" name="seri" required>
+            </div>
+
+            <div class="card">
+                <input type="submit" value="Tahmin Et" style="display: block; margin: 0 auto;">
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+
+</html>
