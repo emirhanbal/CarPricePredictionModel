@@ -21,6 +21,7 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
+            font-size: 2rem;
         }
 
         .header h1 {
@@ -39,7 +40,7 @@
         
 
         .card {
-            width: calc(50% - 10px);
+            height: 50%;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -53,12 +54,13 @@
         }
         
         .predictcard {
-            width: calc(50% - 10px);
+            width: 50%;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-bottom: 20px;
+            margin: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -93,7 +95,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Car Price Prediction</h1>
+            <h2>Car Price Prediction</h2>
         </div>
         
         <div class="predictcard">
@@ -109,7 +111,9 @@
             </div>
         </div>
         
-        <h1>Önerilen İlanlar</h1>
+        <div class="header">
+            <h2>Önerilen İlanlar</h2>
+        </div>
         
         <div class="card-container">
             {% for prediction in predictions %}
