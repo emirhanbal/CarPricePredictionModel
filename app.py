@@ -14,7 +14,7 @@ connection_string = f"mongodb+srv://emirhanbal:{password}@graduation.r68pz0b.mon
 client = MongoClient(connection_string)
 
 #MONGODB ile kodumu ilişkilendirme adımı. burada database'imi bağlıyorum.
-db = client["ilanlar"]
+db = client["ilanlar_arabamcom"]
 collection = db["arac_detay_arabamcom"]
 
 dataFromDatabase = list(collection.find())
